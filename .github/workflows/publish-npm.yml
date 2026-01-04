@@ -49,5 +49,5 @@ jobs:
           # 3. Publish Main Wrapper
           cd npm/main
           # Update version numbers inside package.json to match the tag
-          sed -i "s/\"1.0.0\"/\"$CLEAN_VER\"/g" package.json
+          sed -i "s/\"0.1.0\"/\"$CLEAN_VER\"/g" package.json
           npm publish --access public

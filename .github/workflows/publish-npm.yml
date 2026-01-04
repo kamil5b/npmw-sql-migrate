@@ -65,9 +65,5 @@ jobs:
           # 5. Publish Main Wrapper
           cd npm/main
           
-          # Update all version occurrences in package.json
-          # This replaces "version": "..." and the optionalDependencies versions
-          sed -i "s/\"[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"$CLEAN_VER\"/g" package.json
-          
           npm version $CLEAN_VER --no-git-tag-version
           npm publish --access public

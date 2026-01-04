@@ -55,7 +55,7 @@ jobs:
             cd npm/$FOLDER
             # Copy License (Important for MIT compliance!)
             npm version $CLEAN_VER --no-git-tag-version
-            npm publish --access public
+            npm publish --access public --provenance
             cd ../..
           done
 
@@ -66,4 +66,4 @@ jobs:
           cd npm/main
           
           npm version $CLEAN_VER --no-git-tag-version
-          npm publish --access public
+          npm publish --access public --provenance

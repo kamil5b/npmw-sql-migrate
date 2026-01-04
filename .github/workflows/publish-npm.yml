@@ -1,0 +1,53 @@
+name: Publish to NPM
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v4
+        with: { go-version: '1.21' }
+      - uses: actions/setup-node@v4
+        with: 
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Build and Publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          VERSION: ${{ github.ref_name }}
+        run: |
+          CLEAN_VER=$(echo $VERSION | sed 's/v//')
+          
+          # List: GOOS/GOARCH/FOLDER_NAME
+          PLATFORMS=(
+            "linux/amd64/linux-x64"
+            "linux/arm64/linux-arm64"
+            "darwin/amd64/darwin-x64"
+            "darwin/arm64/darwin-arm64"
+            "windows/amd64/win32-x64"
+          )
+
+          for item in "${PLATFORMS[@]}"; do
+            IFS="/" read -r OS ARCH FOLDER <<< "$item"
+            EXT=""
+            if [ "$OS" == "windows" ]; then EXT=".exe"; fi
+            
+            # 1. Compile Go Binary (Static Linking)
+            CGO_ENABLED=0 GOOS=$OS GOARCH=$ARCH go build -ldflags="-s -w" -o "npm/$FOLDER/bin/sql-migrate$EXT" ./sql-migrate
+
+            # 2. Publish Platform Package
+            cd npm/$FOLDER
+            npm version $CLEAN_VER --no-git-tag-version
+            npm publish --access public
+            cd ../..
+          done
+
+          # 3. Publish Main Wrapper
+          cd npm/main
+          # Update version numbers inside package.json to match the tag
+          sed -i "s/\"1.0.0\"/\"$CLEAN_VER\"/g" package.json
+          npm publish --access public

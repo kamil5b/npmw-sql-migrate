@@ -60,7 +60,7 @@ jobs:
           done
 
           # 4. Final step: Verify with your script before publishing main
-          node npm/test/verify-binaries.js
+          node npm/test/verify-binary.js
 
           # 5. Publish Main Wrapper
           cd npm/main

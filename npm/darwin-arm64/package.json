@@ -1,6 +1,11 @@
 {
   "name": "npmw-sql-migrate-darwin-arm64",
-  "version": "0.1.0",
+  "version": "0.1.8",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamil5b/npmw-sql-migrate"
+  },
   "os": ["darwin"],
   "cpu": ["arm64"],
   "files": ["bin/sql-migrate"]

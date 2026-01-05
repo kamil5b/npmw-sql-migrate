@@ -1,19 +1,29 @@
 {
   "name": "npmw-sql-migrate",
-  "version": "0.1.0",
+  "version": "0.1.8",
   "description": "NPM wrapper for sql-migrate",
   "main": "index.js",
   "bin": {
     "sql-migrate": "index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamil5b/npmw-sql-migrate"
+  },
   "files": [
     "index.js"
   ],
+  "keywords": [
+    "sql-migrate",
+    "npm wrapper",
+    "database migrations"
+  ],
+  "license": "MIT",
   "optionalDependencies": {
-    "npmw-sql-migrate-linux-x64": "0.1.0",
-    "npmw-sql-migrate-linux-arm64": "0.1.0",
-    "npmw-sql-migrate-darwin-x64": "0.1.0",
-    "npmw-sql-migrate-darwin-arm64": "0.1.0",
-    "npmw-sql-migrate-win32-x64": "0.1.0"
+    "npmw-sql-migrate-linux-x64": "0.1.8",
+    "npmw-sql-migrate-linux-arm64": "0.1.8",
+    "npmw-sql-migrate-darwin-x64": "0.1.8",
+    "npmw-sql-migrate-darwin-arm64": "0.1.8",
+    "npmw-sql-migrate-win32-x64": "0.1.8"
   }
 }

@@ -23,7 +23,7 @@ jobs:
           git remote add upstream https://github.com/rubenv/sql-migrate.git
           git fetch upstream --tags
           
-          git checkout main
+          git checkout master
           if git merge upstream/master --no-edit; then
             echo "Merge successful"
           else
@@ -36,7 +36,7 @@ jobs:
           
           if git rev-parse "$LATEST_TAG" >/dev/null 2>&1; then
              echo "No new tags to sync. Version $LATEST_TAG is already current."
-             git push origin main
+             git push origin master
              exit 0
           fi
 
@@ -48,7 +48,7 @@ jobs:
 
           git add .
           git commit -m "chore: sync with upstream $LATEST_TAG and update metadata" || echo "No changes to commit"
-          git push origin main
+          git push origin master
           
           echo "Creating and pushing tag $LATEST_TAG..."
           git tag "$LATEST_TAG"

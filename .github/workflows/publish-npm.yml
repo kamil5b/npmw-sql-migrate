@@ -15,9 +15,12 @@ jobs:
         with: { go-version: '1.24' }
       - uses: actions/setup-node@v4
         with: 
-          node-version: '20'
+          node-version: '22'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Update npm to latest
+        run: npm install -g npm@latest
+        
       - name: Build and Publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

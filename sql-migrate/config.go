@@ -13,9 +13,9 @@ import (
 
 	migrate "github.com/rubenv/sql-migrate"
 
+	_ "github.com/glebarez/go-sqlite"
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/lib/pq"
-	_ "github.com/mattn/go-sqlite3"
 )
 
 var dialects = map[string]gorp.Dialect{

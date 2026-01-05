@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Tweak PATH for Travis
-export PATH=$PATH:$HOME/gopath/bin
+CGO_ENABLED=0 go build -o build_integration ./sql-migrate
 
 OPTIONS="-config=test-integration/dbconfig.yml -env mysql_noflag"
 
 set -ex
 
-sql-migrate status $OPTIONS 2>&1 | grep -q "Make sure that the parseTime option is supplied"
+./build_integration status $OPTIONS 2>&1 | grep -q "Make sure that the parseTime option is supplied"
 

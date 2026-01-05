@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Tweak PATH for Travis
-export PATH=$PATH:$HOME/gopath/bin
+CGO_ENABLED=0 go build -o build_integration ../sql-migrate
 
 export MYSQL_USER=root
 export DATABASE_NAME=test_env
@@ -13,8 +12,8 @@ OPTIONS="-config=test-integration/dbconfig.yml -env mysql_env"
 
 set -ex
 
-sql-migrate status $OPTIONS
-sql-migrate up $OPTIONS
-sql-migrate down $OPTIONS
-sql-migrate redo $OPTIONS
-sql-migrate status $OPTIONS
+./build_integration status $OPTIONS
+./build_integration up $OPTIONS
+./build_integration down $OPTIONS
+./build_integration redo $OPTIONS
+./build_integration status $OPTIONS

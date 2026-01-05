@@ -9,3 +9,5 @@
 bin/
 
 node_modules/
+
+build_integration

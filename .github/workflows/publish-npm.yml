@@ -23,7 +23,7 @@ jobs:
         
       - name: Build and Publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # REMOVED: NODE_AUTH_TOKEN (Let OIDC handle it)
           VERSION: ${{ github.ref_name }}
         run: |
           CLEAN_VER=$(echo $VERSION | sed 's/v//')
@@ -41,35 +41,30 @@ jobs:
             EXT=""
             if [ "$OS" == "windows" ]; then EXT=".exe"; fi
             
-            # DEFINE THE PATH HERE SO CHMOD CAN FIND IT
             TARGET_BIN="npm/$FOLDER/bin/sql-migrate$EXT"
-            
-            # Ensure the bin directory exists
             mkdir -p "npm/$FOLDER/bin"
 
-            # 1. Compile Go Binary
             echo "Building for $FOLDER..."
             CGO_ENABLED=0 GOOS=$OS GOARCH=$ARCH go build -ldflags="-s -w" -o "$TARGET_BIN" ./sql-migrate
 
-            # 2. Set Permissions (using the variable we just defined)
             if [ "$OS" != "windows" ]; then
               chmod +x "$TARGET_BIN"
               echo "Set +x permission for $TARGET_BIN"
             fi
             
-            # 3. Publish Platform Package
+            
             cd npm/$FOLDER
-            # Copy License (Important for MIT compliance!)
-            npm version $CLEAN_VER --no-git-tag-version
+            
+            npm version $CLEAN_VER --no-git-tag-version --allow-same-version
             npm publish --access public --provenance
             cd ../..
           done
 
-          # 4. Final step: Verify with your script before publishing main
           node npm/test/verify-binary.js
 
-          # 5. Publish Main Wrapper
           cd npm/main
           
-          npm version $CLEAN_VER --no-git-tag-version
+          sed -i "s/\"[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"$CLEAN_VER\"/g" package.json
+          
+          npm version $CLEAN_VER --no-git-tag-version --allow-same-version
           npm publish --access public --provenance

@@ -121,12 +121,12 @@ Set up a source of migrations, this can be from memory, from a set of files or f
 
 Then use the Exec function to upgrade your database:
 
-	db, err := sql.Open("sqlite3", filename)
+	db, err := sql.Open("sqlite", filename)
 	if err != nil {
 		// Handle errors!
 	}
 
-	n, err := migrate.Exec(db, "sqlite3", migrations, migrate.Up)
+	n, err := migrate.Exec(db, "sqlite", migrations, migrate.Up)
 	if err != nil {
 		// Handle errors!
 	}

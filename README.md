@@ -245,12 +245,12 @@ migrationSource := &migrate.HttpFileSystemMigrationSource{
 Then use the `Exec` function to upgrade your database:
 
 ```go
-db, err := sql.Open("sqlite3", filename)
+db, err := sql.Open("sqlite", filename)
 if err != nil {
     // Handle errors!
 }
 
-n, err := migrate.Exec(db, "sqlite3", migrations, migrate.Up)
+n, err := migrate.Exec(db, "sqlite", migrations, migrate.Up)
 if err != nil {
     // Handle errors!
 }
@@ -370,7 +370,7 @@ The resulting slice of migrations will be executed in the given order, so it sho
 This library is compatible with sqlx. When calling migrate just dereference the DB from your `*sqlx.DB`:
 
 ```
-n, err := migrate.Exec(db.DB, "sqlite3", migrations, migrate.Up)
+n, err := migrate.Exec(db.DB, "sqlite", migrations, migrate.Up)
                     //   ^^^ <-- Here db is a *sqlx.DB, the db.DB field is the plain sql.DB
 if err != nil {
     // Handle errors!

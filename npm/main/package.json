@@ -1,6 +1,6 @@
 {
   "name": "npmw-sql-migrate",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "NPM wrapper for sql-migrate",
   "main": "index.js",
   "bin": {
@@ -20,10 +20,10 @@
   ],
   "license": "MIT",
   "optionalDependencies": {
-    "npmw-sql-migrate-linux-x64": "0.1.9",
-    "npmw-sql-migrate-linux-arm64": "0.1.9",
-    "npmw-sql-migrate-darwin-x64": "0.1.9",
-    "npmw-sql-migrate-darwin-arm64": "0.1.9",
-    "npmw-sql-migrate-win32-x64": "0.1.9"
+    "npmw-sql-migrate-linux-x64": "0.1.10",
+    "npmw-sql-migrate-linux-arm64": "0.1.10",
+    "npmw-sql-migrate-darwin-x64": "0.1.10",
+    "npmw-sql-migrate-darwin-arm64": "0.1.10",
+    "npmw-sql-migrate-win32-x64": "0.1.10"
   }
 }

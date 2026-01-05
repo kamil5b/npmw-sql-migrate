@@ -89,4 +89,6 @@ This package utilizes **Optional Dependencies**. When you install `npmw-sql-migr
 * **Wrapper License:** [MIT](https://www.google.com/search?q=LICENSE).
 * **Binary License:** Distributed under the original MIT License of `sql-migrate`.
 
-This is a community-maintained fork/wrapper. If you encounter issues with the migration logic itself, please refer to the original repository. If you encounter issues with the NPM installation or binary execution, please open an issue here.
+This is a community-maintained fork/wrapper. 
+If you encounter issues with the migration logic itself, please refer to the original repository. 
+If you encounter issues with the NPM installation or binary execution, please open an issue here.

@@ -34,9 +34,9 @@ The main command is called sql-migrate.
 Each command requires a configuration file (which defaults to dbconfig.yml, but can be specified with the -config flag). This config file should specify one or more environments:
 
 	development:
-		dialect: sqlite3
+		dialect: sqlite
 		datasource: test.db
-		dir: migrations/sqlite3
+		dir: migrations/sqlite
 
 	production:
 		dialect: postgres

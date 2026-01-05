@@ -19,7 +19,7 @@ mysql_env:
     dir: test-migrations
 
 sqlite:
-    dialect: sqlite3
+    dialect: sqlite
     datasource: test.db
     dir: test-migrations
     table: migrations

@@ -14,4 +14,4 @@ sql-migrate redo $OPTIONS
 sql-migrate status $OPTIONS
 
 # Should have used the custom migrations table
-sqlite3 test.db "SELECT COUNT(*) FROM migrations"
+sqlite test.db "SELECT COUNT(*) FROM migrations"

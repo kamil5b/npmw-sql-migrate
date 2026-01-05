@@ -50,9 +50,9 @@ Each command requires a configuration file (which defaults to `dbconfig.yml`, bu
 
 ```yml
 development:
-  dialect: sqlite3
+  dialect: sqlite
   datasource: test.db
-  dir: migrations/sqlite3
+  dir: migrations/sqlite
 
 production:
   dialect: postgres

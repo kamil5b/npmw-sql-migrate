@@ -4,9 +4,15 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kamil5b/npmw-sql-migrate"
+    "url": "git+https://github.com/kamil5b/npmw-sql-migrate.git"
   },
-  "os": ["linux"],
-  "cpu": ["x64"],
-  "files": ["bin/sql-migrate"]
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "files": [
+    "bin/sql-migrate"
+  ]
 }

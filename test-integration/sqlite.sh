@@ -13,4 +13,4 @@ set -ex
 ./build_integration status $OPTIONS
 
 # Should have used the custom migrations table
-sqlite test.db "SELECT COUNT(*) FROM migrations"
+sqlite3 test.db "SELECT COUNT(*) FROM migrations"
